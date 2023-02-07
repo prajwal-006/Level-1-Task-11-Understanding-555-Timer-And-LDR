@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <wiringPi.h>
+#define LED 8
+#define LDR 0
+int main() {
+  int val;
+  wiringPiSetup();
+  pinMode(LED, OUTPUT);
+  pinMode(LDR, INPUT);
+    while (1) {
+    val = analogRead(LDR);
+    if (val < 500) {
+      digitalWrite(LED, 1);
+    } else {
+      digitalWrite(LED, 0);
+    }
+    delay(10);
+  }
+  return 0;
+}
